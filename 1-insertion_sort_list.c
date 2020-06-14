@@ -1,6 +1,25 @@
 #include "sort.h"
 
 /**
+ * dlistint_len - length of a doubly linked list dlistin_t
+ * @h: head of the doubly linked list
+ * Return: number of elements of the doubly linked list
+ */
+size_t dlistint_len(const listint_t *h)
+{
+	const listint_t *current = h;
+	int lg = 0;
+
+	if (h == NULL)
+		return (lg);
+	while (current)
+	{
+		lg++;
+		current = current->next;
+	}
+	return (lg);
+}
+/**
  *insertion_sort_list - sort an doubly linked list, insertion method.
  *@list:Doubly linked list to be sorted
  */
@@ -8,8 +27,10 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *current;
+	int lg;
 
-	if (*list == NULL || list == NULL)
+	lg = dlistint_len(*list);
+	if (*list == NULL || list == NULL || lg < 2)
 		return;
 	current = (*list)->next;
 	while (current)
